@@ -27,5 +27,11 @@
 /public/assets
 .byebug_history
 
+# ignore Rubymine config files
+.idea/*
+
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+log/
+tmp/
