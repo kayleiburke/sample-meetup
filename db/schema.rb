@@ -12,14 +12,15 @@
 
 ActiveRecord::Schema.define(version: 2020_09_04_111756) do
 
-  create_table "groups", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "engagements", id: false, force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "group_id", null: false
+    t.integer "role"
+    t.index ["group_id", "user_id"], name: "index_engagements_on_group_id_and_user_id"
+    t.index ["user_id", "group_id"], name: "index_engagements_on_user_id_and_group_id"
   end
 
-  create_table "roles", force: :cascade do |t|
+  create_table "groups", force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.datetime "created_at", null: false
@@ -31,18 +32,6 @@ ActiveRecord::Schema.define(version: 2020_09_04_111756) do
     t.string "last_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "users_groups_roles", id: false, force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "group_id"
-    t.integer "role_id"
-    t.index ["group_id", "role_id"], name: "index_users_groups_roles_on_group_id_and_role_id"
-    t.index ["group_id"], name: "index_users_groups_roles_on_group_id"
-    t.index ["role_id"], name: "index_users_groups_roles_on_role_id"
-    t.index ["user_id", "group_id"], name: "index_users_groups_roles_on_user_id_and_group_id"
-    t.index ["user_id", "role_id"], name: "index_users_groups_roles_on_user_id_and_role_id"
-    t.index ["user_id"], name: "index_users_groups_roles_on_user_id"
   end
 
 end

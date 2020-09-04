@@ -1,48 +1,48 @@
 require 'test_helper'
 
-class UserGroupRolesControllerTest < ActionDispatch::IntegrationTest
+class EngagementsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @user_group_role = user_group_roles(:one)
+    @engagement = engagements(:one)
   end
 
   test "should get index" do
-    get user_group_roles_url
+    get engagements_url
     assert_response :success
   end
 
   test "should get new" do
-    get new_user_group_role_url
+    get new_engagement_url
     assert_response :success
   end
 
-  test "should create user_group_role" do
-    assert_difference('UserGroupRole.count') do
-      post user_group_roles_url, params: { user_group_role: {  } }
+  test "should create engagement" do
+    assert_difference('Engagement.count') do
+      post engagements_url, params: { engagement: {  } }
     end
 
-    assert_redirected_to user_group_role_url(UserGroupRole.last)
+    assert_redirected_to engagement_url(Engagement.last)
   end
 
-  test "should show user_group_role" do
-    get user_group_role_url(@user_group_role)
+  test "should show engagement" do
+    get engagement_url(@engagement)
     assert_response :success
   end
 
   test "should get edit" do
-    get edit_user_group_role_url(@user_group_role)
+    get edit_engagement_url(@engagement)
     assert_response :success
   end
 
-  test "should update user_group_role" do
-    patch user_group_role_url(@user_group_role), params: { user_group_role: {  } }
-    assert_redirected_to user_group_role_url(@user_group_role)
+  test "should update engagement" do
+    patch engagement_url(@engagement), params: { engagement: {  } }
+    assert_redirected_to engagement_url(@engagement)
   end
 
-  test "should destroy user_group_role" do
-    assert_difference('UserGroupRole.count', -1) do
-      delete user_group_role_url(@user_group_role)
+  test "should destroy engagement" do
+    assert_difference('Engagement.count', -1) do
+      delete engagement_url(@engagement)
     end
 
-    assert_redirected_to user_group_roles_url
+    assert_redirected_to engagements_url
   end
 end

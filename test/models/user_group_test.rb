@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class UserGroupRoleTest < ActiveSupport::TestCase
+class EngagementTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

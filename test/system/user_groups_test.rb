@@ -1,17 +1,17 @@
 require "application_system_test_case"
 
-class UserGroupRolesTest < ApplicationSystemTestCase
+class EngagementsTest < ApplicationSystemTestCase
   setup do
-    @user_group_role = user_group_roles(:one)
+    @engagement = engagements(:one)
   end
 
   test "visiting the index" do
-    visit user_group_roles_url
+    visit engagements_url
     assert_selector "h1", text: "User Groups"
   end
 
   test "creating a User group" do
-    visit user_group_roles_url
+    visit engagements_url
     click_on "New User Group"
 
     click_on "Create User group"
@@ -21,7 +21,7 @@ class UserGroupRolesTest < ApplicationSystemTestCase
   end
 
   test "updating a User group" do
-    visit user_group_roles_url
+    visit engagements_url
     click_on "Edit", match: :first
 
     click_on "Update User group"
@@ -31,7 +31,7 @@ class UserGroupRolesTest < ApplicationSystemTestCase
   end
 
   test "destroying a User group" do
-    visit user_group_roles_url
+    visit engagements_url
     page.accept_confirm do
       click_on "Destroy", match: :first
     end
