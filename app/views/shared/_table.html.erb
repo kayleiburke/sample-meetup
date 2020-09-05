@@ -41,7 +41,11 @@
     <thead>
     <tr>
       <% columns.each do |col| %>
-        <th scope="col"><%= sortable col, col.humanize.capitalize, item_class %></th>
+        <% if col.include? "." %>
+          <th scope="col"><%= (col.split(".")[0]).humanize.capitalize %></th>
+        <% else %>
+          <th scope="col"><%= sortable col, col.humanize.capitalize, item_class %></th>
+        <% end %>
       <% end %>
       <th scope="col" class="col-actions">Actions</th>
     </tr>
@@ -51,7 +55,13 @@
       <tr>
         <% columns.each do |col| %>
           <td>
-            <%= editable item, col %>
+            <% if col.include? "." %>
+              <% item.send(col.split(".")[0]).each do |sub_item| %>
+                <p><%= sub_item.send(col.split(".")[1]) %></p>
+              <% end %>
+            <% else %>
+              <%= editable item, col %>
+            <% end %>
           </td>
         <% end %>
         <td class="text-center">

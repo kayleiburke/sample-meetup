@@ -11,6 +11,6 @@
   <div class="col-lg-12">
     <h2>Groups</h2>
 
-    <%= render "shared/table", items: @groups, item_class: Group, columns: ["name", "description"], search_term: @search_term %>
+    <%= render "shared/table", items: @groups, item_class: Group, columns: ["name", "description", "organizers.full_name"], search_term: @search_term %>
   </div>
 </div>
