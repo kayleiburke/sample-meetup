@@ -3,6 +3,7 @@ class Group < ApplicationRecord
   has_many :users, through: :engagements
 
   def self.search(query)
-    where(["name LIKE ?", "%#{query}%"])
+    query = query.downcase
+    where(["LOWER(name) LIKE ?", "%#{query}%"])
   end
 end
