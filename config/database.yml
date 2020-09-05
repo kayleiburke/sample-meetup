@@ -22,4 +22,7 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  adapter: postgresql
+  database: postgresql-opaque-01192
+  username: <%= ENV['MEETUP_DATABASE_USERNAME'] %>
+  password: <%= ENV['MEETUP_DATABASE_PASSWORD'] %>
