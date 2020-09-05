@@ -16,24 +16,5 @@
 //= require turbolinks
 //= require bootstrap
 //= require editable/bootstrap-editable
-//= require editable/inputs-ext/wysihtml5
-//= require editable/inputs-ext/bootstrap-wysihtml5
-//= require editable/inputs-ext/wysihtml5-editable
 //= require editable/rails
 //= require_tree .
-
-// enable table editing using x-editable
-(function() {
-    var ready;
-
-    ready = function() {
-        return $('.editable').editable({
-            mode: 'inline'
-        });
-    };
-
-    $(document).ready(ready);
-
-    $(document).on('page:load', ready);
-
-}).call(this);

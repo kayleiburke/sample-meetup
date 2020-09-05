@@ -68,3 +68,20 @@
   </table>
   <%= will_paginate items, renderer: BootstrapPagination::Rails %>
 <% end %>
+
+<script>
+    (function() {
+        var ready;
+
+        ready = function() {
+            return $('.editable').editable({
+                mode: 'inline'
+            });
+        };
+
+        $(document).ready(ready);
+
+        $(document).on('page:load', ready);
+
+    }).call(this);
+</script>
