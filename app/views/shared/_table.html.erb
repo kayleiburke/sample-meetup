@@ -1,3 +1,4 @@
+<!-- search bar -->
 <div class="search-right">
   <%= form_tag polymorphic_path(item_class), :method => :get do %>
     <div class="input-group mb-3">
@@ -21,10 +22,12 @@
   <% end %>
 </div>
 
+<!-- "New"" button -->
 <%= link_to new_polymorphic_path(item_class), :class => "btn btn-success" do %>
   <i class="fa fa-plus"></i> New
 <% end %>
 
+<!-- main table -->
 <% if items.length == 0 %>
   <div class="alert alert-warning">Nothing to display</div>
 <% else %>
@@ -40,8 +43,9 @@
     <tbody>
     <% items.each do |item| %>
       <tr>
-        <td><%= item.name %></td>
-        <td><%= item.description %></td>
+        <% columns.each do |col| %>
+          <td><%= item[col] %></td>
+        <% end %>
         <td class="text-center">
           <%= link_to polymorphic_path(item), :class => "btn btn-default" do %>
             <i class="fa fa-eye"></i> Show
