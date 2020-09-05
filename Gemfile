@@ -18,7 +18,7 @@ gem 'uglifier', '>= 1.3.0'
 #
 
 # use Bootstrap for styling
-gem 'twitter-bootstrap-rails'
+gem 'bootstrap'
 gem 'jquery-rails'
 
 # use font-awesome for table header icons

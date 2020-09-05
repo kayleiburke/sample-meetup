@@ -9,4 +9,4 @@
 
 <h2>Groups</h2>
 
-<%= render "shared/table", items: @groups, item_class: Group, columns: ["name", "description"] %>
+<%= render "shared/table", items: @groups, item_class: Group, columns: ["name", "description"], search_term: @search_term %>
