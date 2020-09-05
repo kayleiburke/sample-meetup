@@ -1,4 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_group_path(@group) %> |
+<form>
+  <div class="form-group">
+    <label >Name</label>
+    <%= @group.name %>
+  </div>
+  <div class="form-group">
+    <label >Description</label>
+    <%= @group.description %>
+  </div>
+  <div class="form-group">
+    <label >Users and Roles</label>
+    <% @group.engagements.each do |engagement| %>
+      <p><%= engagement.user.full_name %> <%= engagement.role %></p>
+    <% end %>
+  </div>
+
+</form>
+
 <%= link_to 'Back', groups_path %>
