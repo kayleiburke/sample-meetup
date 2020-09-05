@@ -1,31 +1,37 @@
-<!-- search bar -->
-<div class="search-right">
-  <%= form_tag polymorphic_path(item_class), :method => :get do %>
-    <div class="input-group input-group-md">
-      <%= text_field_tag :search, params[:search], class: 'form-control', placeholder: "Search by Name" %>
-      <span style="padding:0px 0px 0px 0px !important" class="input-group-addon">
+<div class="row">
+  <!-- search bar -->
+  <div class="col-md-6">
+    <%= form_tag polymorphic_path(item_class), :method => :get do %>
+      <div class="input-group input-group-md">
+        <%= text_field_tag :search, params[:search], class: 'form-control', placeholder: "Search by Name" %>
+        <span style="padding:0px 0px 0px 0px !important" class="input-group-addon">
           <%= button_tag type: "submit", class: "btn btn-success" do %>
             <i class="fa fa-search"></i>
           <% end %>
         </span>
-    </div>
-    <% if @search_term.size > 0 %>
-      <div class="col-md-3">
-        <div class="alert alert-success" role="alert">
-          <%= @search_term %>
-          <%= button_tag type: "submit", class: "close", name: "search", value: "" do %>
-            <span aria-hidden="true">&times;</span>
-          <% end %>
-        </div>
       </div>
+      <% if @search_term.size > 0 %>
+        <div class="col-md-6">
+          <div class="alert alert-success" role="alert">
+            <%= @search_term %>
+            <%= button_tag type: "submit", class: "close", name: "search", value: "" do %>
+              <span aria-hidden="true">&times;</span>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>
 
 <!-- "New"" button -->
-<%= link_to new_polymorphic_path(item_class), :class => "btn btn-success" do %>
-  <i class="fa fa-plus"></i> New
-<% end %>
+<div class="row">
+  <div class="col-md-12">
+    <%= link_to new_polymorphic_path(item_class), :class => "btn btn-success" do %>
+      <i class="fa fa-plus"></i> New
+    <% end %>
+  </div>
+</div>
 
 <!-- main table -->
 <% if items.length == 0 %>
