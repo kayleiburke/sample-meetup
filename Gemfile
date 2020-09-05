@@ -17,15 +17,18 @@ gem 'uglifier', '>= 1.3.0'
 #
 
 # use Bootstrap for styling
-gem 'bootstrap'
+gem 'bootstrap-sass'
 gem 'jquery-rails'
 
 # use font-awesome for table header icons
 gem "font-awesome-rails"
+gem 'bootstrap-glyphicons'
 
 # Will Paginate
 gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-bootstrap'
+
+gem 'x-editable-rails'
 
 # use postgres for production
 gem 'pg'

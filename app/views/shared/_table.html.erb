@@ -1,13 +1,13 @@
 <!-- search bar -->
 <div class="search-right">
   <%= form_tag polymorphic_path(item_class), :method => :get do %>
-    <div class="input-group mb-3">
-      <%= text_field_tag :search, params[:search], class: 'form-control', placeholder: "Search by Name", "aria-label": "Username", "aria-describedby": "basic-addon1" %>
-      <div class="input-group-append">
-        <%= button_tag type: "submit", class: "btn btn-success" do %>
-          <i class="fa fa-search"></i>
-        <% end %>
-      </div>
+    <div class="input-group input-group-md">
+      <%= text_field_tag :search, params[:search], class: 'form-control', placeholder: "Search by Name" %>
+      <span style="padding:0px 0px 0px 0px !important" class="input-group-addon">
+          <%= button_tag type: "submit", class: "btn btn-success" do %>
+            <i class="fa fa-search"></i>
+          <% end %>
+        </span>
     </div>
     <% if @search_term.size > 0 %>
       <div class="col-md-3">
@@ -44,14 +44,13 @@
     <% items.each do |item| %>
       <tr>
         <% columns.each do |col| %>
-          <td><%= item[col] %></td>
+          <td>
+            <%= editable item, col %>
+          </td>
         <% end %>
         <td class="text-center">
           <%= link_to polymorphic_path(item), :class => "btn btn-default" do %>
             <i class="fa fa-eye"></i> Show
-          <% end %>
-          <%= link_to edit_polymorphic_path(item), :class => "btn btn-primary" do %>
-            <i class="fa fa-edit"></i> Edit
           <% end %>
           <%= link_to item, method: :delete, data: { confirm: "Are you sure you want to remove?" }, :class => "btn btn-danger" do %>
             <i class="fa fa-trash"></i> Delete

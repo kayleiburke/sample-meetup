@@ -1,19 +1,25 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <div class="container">
+<nav class="navbar navbar-inverse bg-primary">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <a class="navbar-brand navbar-primary" href="/">Meetup</a>
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Meetup</a>
     </div>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
         <% menu_items.each do |menu_item| %>
-          <li class="<%= current_page?(polymorphic_path(menu_item)) ? 'nav-item active' : 'nav-item'%>">
-            <%= link_to menu_item.to_s.pluralize, polymorphic_path(menu_item), :class => 'nav-link primary'  %>
-          </li>
+        <li class="<%= current_page?(polymorphic_path(menu_item)) ? 'nav-item active' : 'nav-item'%>">
+          <%= link_to menu_item.to_s.pluralize, polymorphic_path(menu_item), :class => 'nav-link primary'  %>
+        </li>
         <% end if defined? menu_items %>
       </ul>
-    </div>
-  </div>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
 </nav>
