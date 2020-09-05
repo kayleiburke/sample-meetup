@@ -1,10 +1,17 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update, :destroy]
+  helper_method :sort_column, :sort_direction
 
   # GET /groups
   # GET /groups.json
   def index
-    @groups = Group.all
+    if params[:search]
+      @groups = Group.search(params[:search])
+    else
+      @groups = Group.all
+    end
+
+    @groups = @groups.order(sort_column(Group) + ' ' + sort_direction).paginate(:page => params[:page], :per_page => 5)
   end
 
   # GET /groups/1

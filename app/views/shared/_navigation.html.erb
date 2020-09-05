@@ -1,6 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container">
-    <a class="navbar-brand" href="/">Meetup</a>
+    <div class="navbar-header">
+      <a class="navbar-brand navbar-primary" href="/">Meetup</a>
+    </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -8,7 +10,7 @@
       <ul class="navbar-nav mr-auto">
         <% menu_items.each do |menu_item| %>
           <li class="<%= current_page?(polymorphic_path(menu_item)) ? 'nav-item active' : 'nav-item'%>">
-            <%= link_to menu_item.to_s.pluralize, polymorphic_path(menu_item), :class => 'nav-link'  %>
+            <%= link_to menu_item.to_s.pluralize, polymorphic_path(menu_item), :class => 'nav-link primary'  %>
           </li>
         <% end if defined? menu_items %>
       </ul>

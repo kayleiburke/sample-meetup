@@ -18,8 +18,15 @@ gem 'uglifier', '>= 1.3.0'
 #
 
 # use Bootstrap for styling
-gem 'bootstrap'
+gem 'twitter-bootstrap-rails'
 gem 'jquery-rails'
+
+# use font-awesome for table header icons
+gem "font-awesome-rails"
+
+# Will Paginate
+gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate-bootstrap'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
