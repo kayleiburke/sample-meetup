@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_04_111756) do
+ActiveRecord::Schema.define(version: 2020_09_08_071427) do
 
-  create_table "engagements", id: false, force: :cascade do |t|
+  create_table "engagements", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "group_id", null: false
     t.integer "role"

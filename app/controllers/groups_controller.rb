@@ -13,11 +13,46 @@ class GroupsController < ApplicationController
 
     @groups = @groups.order(sort_column(Group) + ' ' + sort_direction).paginate(:page => params[:page], :per_page => 5)
     @search_term = params[:search].nil? ? "" : params[:search]
+    @columns = [
+        {
+          field: "name",
+          editable: true,
+
+        },
+        {
+            field: "description",
+            editable: true
+        },
+        {
+            field: "organizers",
+            subField: "full_name",
+            editable: false
+        },
+        {
+            field: "actions"
+        }
+    ]
   end
 
   # GET /groups/1
   # GET /groups/1.json
   def show
+    @engagements = @group.engagements.paginate(:page => params[:page], :per_page => 5)
+    @columns = [
+        {
+            field: "user",
+            subField: "full_name",
+            editable: false
+        },
+        {
+            field: "role",
+            editable: false
+        },
+        {
+            field: "actions",
+            hidden: ["show"]
+        }
+    ]
   end
 
   # GET /groups/new

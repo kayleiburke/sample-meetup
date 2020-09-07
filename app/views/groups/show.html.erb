@@ -1,21 +1,34 @@
 <p id="notice"><%= notice %></p>
 
-<form>
-  <div class="form-group">
-    <label >Name</label>
-    <%= @group.name %>
-  </div>
-  <div class="form-group">
-    <label >Description</label>
-    <%= @group.description %>
-  </div>
-  <div class="form-group">
-    <label >Users and Roles</label>
-    <% @group.engagements.each do |engagement| %>
-      <p><%= engagement.user.full_name %> <%= engagement.role %></p>
-    <% end %>
-  </div>
+<h2>Group Info</h2>
 
-</form>
+<%= form_for @group, html: { class: "well form-horizontal" } do |f| %>
+  <fieldset>
+    <div class="form-group">
+      <label class="col-md-4 control-label">Name</label>
+      <div class="col-md-8 inputGroupContainer">
+        <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+          <%= f.text_field :name, class: "form-control", disabled: true %>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-md-4 control-label">Description</label>
+      <div class="col-md-8 inputGroupContainer">
+        <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+          <%= f.text_field :description, class: "form-control", disabled: true %>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-md-4 control-label">Users and Roles</label>
+      <div class="col-md-8 inputGroupContainer">
+        <%= render "shared//table/table", items: @engagements, item_class: Engagement, columns: @columns %>
+      </div>
+    </div>
+  </fieldset>
+<% end %>
+
+
 
 <%= link_to 'Back', groups_path %>
