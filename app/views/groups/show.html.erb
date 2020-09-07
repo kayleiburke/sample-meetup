@@ -1,25 +1,13 @@
-<p id="notice"><%= notice %></p>
+<% if notice %>
+  <%= render "shared/notice", notice: notice %>
+<% end %>
 
 <h2>Group Info</h2>
 
-<%= form_for @group, html: { class: "well form-horizontal" } do |f| %>
+<%= render 'form', group: @group, show_engagements: true %>
+
+<form class="well form-horizontal">
   <fieldset>
-    <div class="form-group">
-      <label class="col-md-4 control-label">Name</label>
-      <div class="col-md-8 inputGroupContainer">
-        <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <%= f.text_field :name, class: "form-control", disabled: true %>
-        </div>
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="col-md-4 control-label">Description</label>
-      <div class="col-md-8 inputGroupContainer">
-        <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-          <%= f.text_field :description, class: "form-control", disabled: true %>
-        </div>
-      </div>
-    </div>
     <div class="form-group">
       <label class="col-md-4 control-label">Users and Roles</label>
       <div class="col-md-8 inputGroupContainer">
@@ -27,8 +15,6 @@
       </div>
     </div>
   </fieldset>
-<% end %>
-
-
+</form>
 
 <%= link_to 'Back', groups_path %>

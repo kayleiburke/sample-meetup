@@ -94,6 +94,10 @@ class GroupsController < ApplicationController
     end
   end
 
+  def import
+
+  end
+
   # DELETE /groups/1
   # DELETE /groups/1.json
   def destroy
