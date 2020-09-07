@@ -10,7 +10,7 @@
 <div class="row">
   <div class="col-lg-12">
     <h2>Groups</h2>
-    <%= render "shared/table/table_search", item_class: Group, search_term: @search_term %>
+    <%= render "shared/table/search", item_class: Group, search_term: @search_term %>
     <%= render "shared/table/new_button", item_class: Group %>
     <%= render "shared/table/table", items: @groups, item_class: Group, columns: @columns, search_term: @search_term %>
   </div>
