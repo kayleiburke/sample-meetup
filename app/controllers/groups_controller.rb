@@ -37,22 +37,7 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
-    @engagements = @group.engagements.paginate(:page => params[:page], :per_page => 5)
-    @columns = [
-        {
-            field: "user",
-            subField: "full_name",
-            editable: false
-        },
-        {
-            field: "role",
-            editable: false
-        },
-        {
-            field: "actions",
-            hidden: ["show"]
-        }
-    ]
+    set_columns
   end
 
   # GET /groups/new
@@ -62,6 +47,7 @@ class GroupsController < ApplicationController
 
   # GET /groups/1/edit
   def edit
+    set_columns
   end
 
   # POST /groups
@@ -83,6 +69,8 @@ class GroupsController < ApplicationController
   # PATCH/PUT /groups/1
   # PATCH/PUT /groups/1.json
   def update
+    set_columns
+
     respond_to do |format|
       if @group.update(group_params)
         format.html { redirect_to @group, notice: 'Group was successfully updated.' }
@@ -117,5 +105,23 @@ class GroupsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def group_params
       params.require(:group).permit(:name, :description)
+    end
+
+    def set_columns
+      @columns = [
+          {
+              field: "user",
+              subField: "full_name",
+              editable: false
+          },
+          {
+              field: "role",
+              editable: false
+          },
+          {
+              field: "actions",
+              hidden: ["show"]
+          }
+      ]
     end
 end

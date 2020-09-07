@@ -26,7 +26,7 @@
             <% if col_hash[:field] == "actions" %>
               <!-- display the Show button unless the configurations settings dictate otherwise -->
               <% unless col_hash[:hidden] and col_hash[:hidden].map(&:downcase).include? "show" %>
-                <%= link_to polymorphic_path(item), :class => "btn btn-default" do %>
+                <%= link_to edit_polymorphic_path(item), :class => "btn btn-default" do %>
                   <i class="fa fa-eye"></i> Show
                 <% end %>
               <% end %>

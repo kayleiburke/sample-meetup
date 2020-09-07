@@ -1,6 +1,20 @@
-<h1>Editing Group</h1>
+<% if notice %>
+  <%= render "shared/notice", notice: notice %>
+<% end %>
 
-<%= render 'form', group: @group %>
+<h2>Group Info</h2>
 
-<%= link_to 'Show', @group %> |
+<%= render 'form', group: @group, show_engagements: true %>
+
+<form class="well form-horizontal">
+  <fieldset>
+    <div class="form-group">
+      <label class="col-md-4 control-label">Users and Roles</label>
+      <div class="col-md-8 inputGroupContainer">
+        <%= render "shared/table/table", items: @group.engagements.paginate(:page => params[:page], :per_page => 5), item_class: Engagement, columns: @columns %>
+      </div>
+    </div>
+  </fieldset>
+</form>
+
 <%= link_to 'Back', groups_path %>

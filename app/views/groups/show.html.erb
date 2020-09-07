@@ -11,7 +11,7 @@
     <div class="form-group">
       <label class="col-md-4 control-label">Users and Roles</label>
       <div class="col-md-8 inputGroupContainer">
-        <%= render "shared/table/table", items: @engagements, item_class: Engagement, columns: @columns %>
+        <%= render "shared/table/table", items: @group.engagements.paginate(:page => params[:page], :per_page => 5), item_class: Engagement, columns: @columns %>
       </div>
     </div>
   </fieldset>
