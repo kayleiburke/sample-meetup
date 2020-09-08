@@ -1,6 +1,7 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update, :destroy]
   helper_method :sort_column, :sort_direction
+  skip_before_action :verify_authenticity_token, only: [:import]
 
   # GET /groups
   # GET /groups.json
@@ -83,7 +84,38 @@ class GroupsController < ApplicationController
   end
 
   def import
+    success_message = "The following engagements were created: <ul>"
+    error_message = "The following engagements were not created: <ul>"
+    begin
+      index = 1
+      CSV.foreach(params["file"].path, headers: true) do |row|
+        begin
+          user = User.find_or_create_by(first_name: row[0].strip.capitalize, last_name: row[1].strip.capitalize)
+          group = Group.find_or_create_by(name: row[2].strip)
+          engagement = Engagement.find_or_create_by(user: user, group: group, role: row[3].strip.downcase)
+          success_message = success_message + "<li>Row " + index.to_s + ": " + engagement.stringify + "</li>"
+        rescue Exception => e
+          error_message = error_message + "<li>Row " + index.to_s + ": " + row.to_s + "</li>"
+          error_message = error_message + "<ul><li>" + e.message + "</li></ul>"
+          next
+        ensure
+          index = index + 1
+        end
+      end
 
+      success_message = success_message + "</ul>"
+      error_message = error_message + "</ul>"
+
+      respond_to do |format|
+        format.html { redirect_to request.referrer, notice: success_message + error_message }
+        format.json { head :no_content }
+      end
+    rescue Exception => e
+      respond_to do |format|
+        format.html { redirect_to request.referrer, notice: e.message }
+        format.json { render json: e.to_s, status: :unprocessable_entity, errors: { count: 1, full_messages: [e.message]}  }
+      end
+    end
   end
 
   # DELETE /groups/1

@@ -1,7 +1,7 @@
 <% if notice %>
   <%= render "shared/notice", notice: notice %>
 <% end %>
-<%= render "shared/errors", item: @engagement %>
+<%= render "shared/errors", errors: @engagement.errors %>
 
 <%= form_for @engagement, html: { class: "well form-horizontal" } do |f| %>
   <fieldset>

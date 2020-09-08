@@ -8,4 +8,9 @@ class Group < ApplicationRecord
     query = query.downcase
     where(["LOWER(name) LIKE ?", "%#{query}%"])
   end
+
+  def self.import(file)
+#    CSV.parse(File.read(file), headers: true)
+    #raise "Unknown file type: #{file.original_filename}"
+  end
 end
