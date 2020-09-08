@@ -28,7 +28,7 @@ class EngagementsController < ApplicationController
 
     respond_to do |format|
       if @engagement.save
-        format.html { redirect_to @engagement, notice: 'User group was successfully created.' }
+        format.html { redirect_to @engagement, notice: 'Engagement was successfully created.' }
         format.json { render :show, status: :created, location: @engagement }
       else
         format.html { render :new }
@@ -56,7 +56,7 @@ class EngagementsController < ApplicationController
   def destroy
     @engagement.destroy
     respond_to do |format|
-      format.html { redirect_to engagements_url, notice: 'User group was successfully destroyed.' }
+      format.html { redirect_to request.referrer, notice: 'User group was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +69,6 @@ class EngagementsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def engagement_params
-      params.fetch(:engagement, {})
+      params.require(:engagement).permit(:user_id, :group_id, :role)
     end
 end

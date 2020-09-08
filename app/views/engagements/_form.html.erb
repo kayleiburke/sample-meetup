@@ -1,17 +1,40 @@
-<%= form_with(model: engagement, local: true) do |form| %>
-  <% if engagement.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(engagement.errors.count, "error") %> prohibited this engagement from being saved:</h2>
+<% if notice %>
+  <%= render "shared/notice", notice: notice %>
+<% end %>
+<%= render "shared/errors", item: @engagement %>
 
-      <ul>
-      <% engagement.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<%= form_for @engagement, html: { class: "well form-horizontal" } do |f| %>
+  <fieldset>
+    <div class="form-group">
+      <label class="col-md-4 control-label">User</label>
+      <div class="col-md-8 inputGroupContainer">
+        <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+          <%= f.collection_select :user_id, User.order(:last_name), :id, :full_name, { include_blank: false }, {class: "form-control"} %>
+        </div>
+      </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <div class="form-group">
+      <label class="col-md-4 control-label">Group</label>
+      <div class="col-md-8 inputGroupContainer">
+        <div class="input-group"><span class="input-group-addon"><i class="fa fa-users"></i></span>
+          <%= f.collection_select :group_id, Group.order(:name), :id, :name, { include_blank: false }, {class: "form-control"} %>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-md-4 control-label">Group</label>
+      <div class="col-md-8 inputGroupContainer">
+        <div class="input-group"><span class="input-group-addon"><i class="fa fa-id-badge"></i></span>
+          <%= f.select(:role, Engagement.roles.keys.map {|role| [role.titleize,role]}, {:include_blank => false}, {class: "form-control"}) %>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-12 inputGroupContainer">
+        <div class="input-group pull-right">
+          <%= f.submit "Submit", class: "btn btn-success"%>
+        </div>
+      </div>
+    </div>
+  </fieldset>
 <% end %>
