@@ -10,14 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_08_071427) do
+ActiveRecord::Schema.define(version: 2020_09_08_131300) do
 
   create_table "engagements", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "group_id", null: false
+    t.integer "user_id"
+    t.integer "group_id"
     t.integer "role"
-    t.index ["group_id", "user_id"], name: "index_engagements_on_group_id_and_user_id"
-    t.index ["user_id", "group_id"], name: "index_engagements_on_user_id_and_group_id"
+    t.index ["user_id", "group_id", "role"], name: "index_engagements_on_user_id_and_group_id_and_role", unique: true
   end
 
   create_table "groups", force: :cascade do |t|
