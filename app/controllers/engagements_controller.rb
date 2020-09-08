@@ -28,7 +28,7 @@ class EngagementsController < ApplicationController
 
     respond_to do |format|
       if @engagement.save
-        format.html { redirect_to @engagement, notice: 'Engagement was successfully created.' }
+        format.html { redirect_to edit_group_path(@engagement.group), notice: 'Engagement was successfully created.' }
         format.json { render :show, status: :created, location: @engagement }
       else
         format.html { render :new }
