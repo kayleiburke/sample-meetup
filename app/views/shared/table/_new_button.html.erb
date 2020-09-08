@@ -1,8 +1,4 @@
 <!-- "New"" button -->
-<div class="row">
-  <div class="col-md-12">
-    <%= link_to new_polymorphic_path(item_class), :class => "btn btn-success" do %>
-      <i class="fa fa-plus"></i> New
-    <% end %>
-  </div>
-</div>
+<%= link_to new_polymorphic_path(item_class), :class => "btn btn-success" do %>
+  <i class="fa fa-plus"></i> New
+<% end %>
