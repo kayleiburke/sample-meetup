@@ -12,7 +12,7 @@ class GroupsController < ApplicationController
       @groups = Group.all
     end
 
-    @groups = @groups.order(sort_column(Group) + ' ' + sort_direction).paginate(:page => params[:page], :per_page => 5)
+    @groups = @groups.order("LOWER(" + sort_column(Group) + ') ' + sort_direction).paginate(:page => params[:page], :per_page => 5)
     @search_term = params[:search].nil? ? "" : params[:search]
     @columns = [
         {
