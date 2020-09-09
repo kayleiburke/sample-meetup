@@ -93,7 +93,7 @@ class GroupsController < ApplicationController
           user = User.find_or_create_by(first_name: row[0].strip.capitalize, last_name: row[1].strip.capitalize)
           group = Group.find_or_create_by(name: row[2].strip)
           engagement = Engagement.find_or_create_by(user: user, group: group, role: row[3].strip.downcase)
-          success_message = success_message + "<li>Row " + index.to_s + ": " + engagement.stringify + "</li>"
+          success_message = success_message + "<li>" + engagement.stringify + "</li>"
         rescue Exception => e
           error_message = error_message + "<li>Row " + index.to_s + ": " + row.to_s + "</li>"
           error_message = error_message + "<ul><li>" + e.message + "</li></ul>"
