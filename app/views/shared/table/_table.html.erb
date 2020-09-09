@@ -9,10 +9,8 @@
         <% col = col_hash[:field] %>
         <% if col == "actions" %>
           <th scope="col" class="col-actions">Actions</th>
-        <% elsif col.include? "." %>
-          <th scope="col"><%= (col).humanize.capitalize %></th>
         <% else %>
-          <th scope="col"><%= sortable col, col.humanize.capitalize, item_class %></th>
+          <th scope="col"><%= sortable col_hash[:sort_column], col.humanize.capitalize, item_class %></th>
         <% end %>
       <% end %>
     </tr>
@@ -37,15 +35,15 @@
                 <% end %>
               <% end %>
             <!-- if we are displaying a field that is an association-->
-            <% elsif col_hash[:subField] %>
+            <% elsif col_hash[:sub_field] %>
               <!-- if the association is one-to-many -->
               <% if col_hash[:field].pluralize == col_hash[:field] %>
                 <% item.send(col_hash[:field]).each do |sub_item| %>
-                  <p><%= sub_item.send(col_hash[:subField]) %></p>
+                  <p><%= sub_item.send(col_hash[:sub_field]) %></p>
                 <% end %>
               <!-- if the association is one-to-one -->
               <% else %>
-                <p><%= item.send(col_hash[:field]).send(col_hash[:subField]) %></p>
+                <p><%= item.send(col_hash[:field]).send(col_hash[:sub_field]) %></p>
               <% end %>
             <!-- if we are displaying a standard field -->
             <% else %>

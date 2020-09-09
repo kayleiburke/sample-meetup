@@ -12,22 +12,27 @@ class GroupsController < ApplicationController
       @groups = Group.all
     end
 
+    if params[:sort].include? "."
+      @groups = @groups.includes(:organizers).references(:organizers)
+    end
     @groups = @groups.order("LOWER(" + sort_column(Group) + ') ' + sort_direction).paginate(:page => params[:page], :per_page => 5)
     @search_term = params[:search].nil? ? "" : params[:search]
     @columns = [
         {
           field: "name",
           editable: true,
-
+          sort_column: "name"
         },
         {
             field: "description",
-            editable: true
+            editable: true,
+            sort_column: "description"
         },
         {
             field: "organizers",
-            subField: "full_name",
-            editable: false
+            sub_field: "full_name",
+            editable: false,
+            sort_column: "users.first_name"
         },
         {
             field: "actions"
@@ -144,12 +149,14 @@ class GroupsController < ApplicationController
       @columns = [
           {
               field: "user",
-              subField: "full_name",
-              editable: false
+              sub_field: "full_name",
+              editable: false,
+              sort_column: "users.first_name"
           },
           {
               field: "role",
-              editable: false
+              editable: false,
+              sort_column: "role"
           },
           {
               field: "actions",

@@ -45,4 +45,29 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to groups_url
   end
+
+  test "should create user when importing csv" do
+    # assert_difference('User.count') do
+      open_csv
+    # end
+
+    debugger
+    assert_redirected_to group_url(User.find_by(first_name: "Bob", last_name: "Billy"))
+  end
+
+  test "should create group when importing csv" do
+    open_csv
+    assert_not_nil Group.find_by(name: "Sit 'n Stitch")
+  end
+
+  test "should create engagement when importing csv" do
+    open_csv
+    debugger
+    assert_not_nil Engagement.find_by(user: users(:three), group: groups(:two), role: :presenter )
+  end
+
+  def open_csv
+    post import_groups_path, params: { file: fixture_file_upload('files/test.csv','csv') }
+  end
+
 end
