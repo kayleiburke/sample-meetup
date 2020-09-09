@@ -1,7 +1,6 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update, :destroy]
   helper_method :sort_column, :sort_direction
-  skip_before_action :verify_authenticity_token, only: [:import]
 
   # GET /groups
   # GET /groups.json
@@ -107,12 +106,13 @@ class GroupsController < ApplicationController
       error_message = error_message + "</ul>"
 
       respond_to do |format|
-        format.html { redirect_to request.referrer, notice: success_message + error_message }
+        # user redirect_to rather than rendering the index directly because the index html page relies on instance variables
+        format.html { redirect_to groups_path, notice: success_message + error_message }
         format.json { head :no_content }
       end
     rescue Exception => e
       respond_to do |format|
-        format.html { redirect_to request.referrer, notice: e.message }
+        format.html { redirect_to groups_path, notice: e.message }
         format.json { render json: e.to_s, status: :unprocessable_entity, errors: { count: 1, full_messages: [e.message]}  }
       end
     end
