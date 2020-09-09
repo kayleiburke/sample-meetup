@@ -15,7 +15,14 @@ class GroupsController < ApplicationController
     if params[:sort] and params[:sort].include? "."
       @groups = @groups.includes(:organizers).references(:organizers)
     end
-    @groups = @groups.order("LOWER(" + sort_column(Group) + ') ' + sort_direction).paginate(:page => params[:page], :per_page => 5)
+
+    sort_col = sort_column(Group)
+
+    if sort_col != "id"
+      sort_col = "LOWER(" + sort_col + ")"
+    end
+
+    @groups = @groups.order(sort_column(Group) + " " + sort_direction).paginate(:page => params[:page], :per_page => 5)
     @search_term = params[:search].nil? ? "" : params[:search]
     @columns = [
         {
