@@ -3,10 +3,14 @@
     <div class="form-group">
       <label class="col-md-4 control-label">Users and Roles</label>
       <div class="col-md-8 inputGroupContainer">
-        <div class="pull-right">
-          <%= render 'shared/table/new_button', item_class: Engagement %>
+        <div class="input-group pull-right">
+          <div class="margin-bottom-10">
+            <%= render 'shared/table/new_button', item_class: Engagement %>
+          </div>
         </div>
-        <%= render "shared/table/table", items: @group.engagements.paginate(:page => params[:page], :per_page => 5), item_class: Engagement, columns: @columns %>
+        <div class="">
+          <%= render "shared/table/table", items: @group.engagements.paginate(:page => params[:page], :per_page => 5), item_class: Engagement, columns: @columns %>
+        </div>
       </div>
     </div>
   </fieldset>
