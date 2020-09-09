@@ -15,6 +15,13 @@ class EngagementsController < ApplicationController
   # GET /engagements/new
   def new
     @engagement = Engagement.new
+    group ||= Group.find_by_id(params[:group])
+    if !group
+      if Group.first
+        group = Group.first
+      end
+    end
+    @engagement.group = group
   end
 
   # GET /engagements/1/edit
