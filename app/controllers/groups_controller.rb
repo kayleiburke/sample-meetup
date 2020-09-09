@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+  require 'csv'
   before_action :set_group, only: [:show, :edit, :update, :destroy]
   helper_method :sort_column, :sort_direction
 
