@@ -12,7 +12,7 @@ class GroupsController < ApplicationController
       @groups = Group.all
     end
 
-    if params[:sort].include? "."
+    if params[:sort] and params[:sort].include? "."
       @groups = @groups.includes(:organizers).references(:organizers)
     end
     @groups = @groups.order("LOWER(" + sort_column(Group) + ') ' + sort_direction).paginate(:page => params[:page], :per_page => 5)
@@ -150,13 +150,11 @@ class GroupsController < ApplicationController
           {
               field: "user",
               sub_field: "full_name",
-              editable: false,
-              sort_column: "users.first_name"
+              editable: false
           },
           {
               field: "role",
-              editable: false,
-              sort_column: "role"
+              editable: false
           },
           {
               field: "actions",

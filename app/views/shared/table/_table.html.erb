@@ -9,8 +9,10 @@
         <% col = col_hash[:field] %>
         <% if col == "actions" %>
           <th scope="col" class="col-actions">Actions</th>
-        <% else %>
+        <% elsif col_hash[:sort_column] %>
           <th scope="col"><%= sortable col_hash[:sort_column], col.humanize.capitalize, item_class %></th>
+        <% else %>
+            <th scope="col" class="col-actions"><%= col.humanize.capitalize %></th>
         <% end %>
       <% end %>
     </tr>
