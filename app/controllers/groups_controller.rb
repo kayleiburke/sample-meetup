@@ -12,9 +12,10 @@ class GroupsController < ApplicationController
       @groups = Group.all
     end
 
-    if params[:sort] and params[:sort].include? "."
-      @groups = @groups.includes(:organizers).references(:organizers)
-    end
+    # TODO: fix sorting for the Organizers column of the Groups table
+    # if params[:sort] and params[:sort].include? "."
+    #   @groups = @groups.includes(:organizers).references(:organizers)
+    # end
 
     sort_col = sort_column(Group)
 
@@ -38,8 +39,7 @@ class GroupsController < ApplicationController
         {
             field: "organizers",
             sub_field: "full_name",
-            editable: false,
-            sort_column: "users.first_name"
+            editable: false
         },
         {
             field: "actions"
