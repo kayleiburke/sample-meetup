@@ -17,7 +17,7 @@ class EngagementsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create engagement" do
     assert_difference('Engagement.count') do
-      post engagements_url, params: { engagement: {  } }
+      post engagements_url, params: { engagement: { user: users(:three), group: groups(:one), role: "organizer" } }
     end
 
     assert_redirected_to engagement_url(Engagement.last)
@@ -34,7 +34,7 @@ class EngagementsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update engagement" do
-    patch engagement_url(@engagement), params: { engagement: {  } }
+    patch engagement_url(@engagement), params: { engagement: { user: User.first, group: Group.first, role: :organizer } }
     assert_redirected_to engagement_url(@engagement)
   end
 
@@ -43,6 +43,6 @@ class EngagementsControllerTest < ActionDispatch::IntegrationTest
       delete engagement_url(@engagement)
     end
 
-    assert_redirected_to engagements_url
+    assert_redirected_to edit_group_url
   end
 end

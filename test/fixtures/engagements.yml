@@ -1,0 +1,16 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+ user: one
+ group: one
+ role: :presenter
+
+two:
+ user: two
+ group: two
+ role: :organizer
+
+three:
+ user: one
+ group: two
+ role: :participant

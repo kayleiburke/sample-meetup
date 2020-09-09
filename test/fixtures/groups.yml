@@ -4,8 +4,9 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-# column: value
+one:
+ name: "My Test Group"
+ description: "This is a test group"
+two:
+ name: "Crafting Club"
+ description: "We meet up once a week to work on fun crafts!"

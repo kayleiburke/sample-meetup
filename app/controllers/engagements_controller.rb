@@ -54,9 +54,10 @@ class EngagementsController < ApplicationController
   # DELETE /engagements/1
   # DELETE /engagements/1.json
   def destroy
+    group = @engagement.group
     @engagement.destroy
     respond_to do |format|
-      format.html { redirect_to request.referrer, notice: 'User group was successfully destroyed.' }
+      format.html { redirect_to edit_group_path(group), notice: 'Engagement was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
