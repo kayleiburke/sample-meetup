@@ -17,10 +17,9 @@ class EngagementsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create engagement" do
     assert_difference('Engagement.count') do
-      post engagements_url, params: { engagement: { user: users(:three), group: groups(:one), role: "organizer" } }
+      post engagements_url, params: { engagement: { user_id: users(:three).id, group_id: groups(:one).id, role: "organizer" } }
     end
-
-    assert_redirected_to engagement_url(Engagement.last)
+    assert_redirected_to edit_group_url(Engagement.last.group)
   end
 
   test "should show engagement" do

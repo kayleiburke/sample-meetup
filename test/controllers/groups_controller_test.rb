@@ -47,23 +47,24 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create user when importing csv" do
-    # assert_difference('User.count') do
+    # there are 3 valid rows with 3 distinct users in the test import file
+    assert_difference('User.count', 3) do
       open_csv
-    # end
-
-    debugger
-    assert_redirected_to group_url(User.find_by(first_name: "Bob", last_name: "Billy"))
+    end
   end
 
   test "should create group when importing csv" do
-    open_csv
-    assert_not_nil Group.find_by(name: "Sit 'n Stitch")
+    # there are 3 valid rows with 2 distince groups in the test import file
+    assert_difference('Group.count', 2) do
+      open_csv
+    end
   end
 
   test "should create engagement when importing csv" do
-    open_csv
-    debugger
-    assert_not_nil Engagement.find_by(user: users(:three), group: groups(:two), role: :presenter )
+    # there are 3 valid rows in the test import file
+    assert_difference('Engagement.count', 3) do
+      open_csv
+    end
   end
 
   def open_csv
