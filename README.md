@@ -16,7 +16,9 @@ To run the application:
 The live demo site can be accessed at: https://sample-meetup-site.herokuapp.com/
 
 
-# App Specifications:
+## App Specifications:
+Below were the specifications used to design the application:
+
 - This app stores Users and the Groups they attend. Users have first names and last names.
 Groups have a name. Users can attend multiple groups and have roles in each group. The roles
 are: Organizer, Presenter, Participant.
