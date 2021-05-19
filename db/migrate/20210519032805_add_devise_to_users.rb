@@ -2,6 +2,7 @@
 
 class AddDeviseToUsers < ActiveRecord::Migration[5.2]
   def self.up
+
     change_table :users do |t|
       ## Database authenticatable
       t.string :email,              null: false, default: ""
@@ -35,6 +36,12 @@ class AddDeviseToUsers < ActiveRecord::Migration[5.2]
 
       # Uncomment below if timestamps were not included in your original model.
       # t.timestamps null: false
+    end
+
+    User.all.each_with_index do |u|
+      if u.email.empty?
+        u.update_attributes(email: Faker::Internet.email)
+      end
     end
 
     add_index :users, :email,                unique: true

@@ -17,6 +17,7 @@ gem 'uglifier', '>= 1.3.0'
 #
 
 gem 'devise'
+gem 'faker'
 
 # use Bootstrap for styling
 gem 'bootstrap-sass'
