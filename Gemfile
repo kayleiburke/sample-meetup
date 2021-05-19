@@ -16,6 +16,8 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'mini_racer', platforms: :ruby
 #
 
+gem 'devise'
+
 # use Bootstrap for styling
 gem 'bootstrap-sass'
 gem 'jquery-rails'
