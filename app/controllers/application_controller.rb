@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
   def sort_column(class_name = nil)
     sort_col = "id"
 
@@ -15,5 +17,11 @@ class ApplicationController < ActionController::Base
 
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:first_name, :last_name, :email, :password)}
   end
 end

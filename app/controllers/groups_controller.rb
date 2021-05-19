@@ -102,7 +102,15 @@ class GroupsController < ApplicationController
       index = 1
       CSV.foreach(params["file"].path, headers: true) do |row|
         begin
-          user = User.find_or_create_by(first_name: row[0].strip.capitalize, last_name: row[1].strip.capitalize)
+          first_name = row[0].strip.capitalize
+          last_name = row[1].strip.capitalize
+
+          user = User.find_by(first_name: first_name, last_name: last_name)
+
+          if !user
+            user = User.create!(first_name: first_name, last_name: last_name, email: Faker::Internet.email, password: "test123", password_confirmation: "test123")
+          end
+
           group = Group.find_or_create_by(name: row[2].strip)
           engagement = Engagement.find_or_create_by(user: user, group: group, role: row[3].strip.downcase)
           success_message = success_message + "<li>" + engagement.stringify + "</li>"

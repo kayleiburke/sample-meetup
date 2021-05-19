@@ -5,6 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :engagements
   has_many :groups, through: :engagements
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :email, uniqueness: true
 
   def full_name
     [self.first_name, self.last_name].join(" ")
