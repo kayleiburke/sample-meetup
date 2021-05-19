@@ -3,6 +3,7 @@
   <div class="col-md-3"></div>
   <div class="col-md-6">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <p class="mx-auto meetup-logo">M</p>
       <%= render "devise/shared/error_messages", resource: resource %>
       <h1 class="h3 mb-3 fw-normal">Sign up</h1>
 
@@ -18,12 +19,10 @@
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control", placeholder: "Password confirmation" %>
       </div>
 
-      <%= f.submit "Sign up", class: "w-100 btn btn-lg btn-primary" %>
+      <%= f.submit "Sign up", class: "btn btn-lg btn-primary btn-block" %>
     <% end %>
   </div>
   <div class="col-md-3"></div>
-
-  <%= render "devise/shared/links" %>
 </div>
 
 </body>
