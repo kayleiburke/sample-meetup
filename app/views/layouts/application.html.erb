@@ -12,6 +12,13 @@
   <body>
     <%= render 'shared/navigation', menu_items: [Group] %>
     <div class="container">
+      <% if notice %>
+        <%= render "shared/notice", notice: notice %>
+      <% end %>
+      <% if alert %>
+        <%= render "shared/notice", notice: alert, alert_type: "danger" %>
+      <% end %>
+
       <%= yield %>
     </div>
   </body>
