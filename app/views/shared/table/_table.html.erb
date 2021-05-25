@@ -23,39 +23,19 @@
         <% columns.each do |col_hash| %>
           <td>
             <!-- Actions column -->
-            <% if col_hash[:field] == "actions" %>
-              <!-- display the Show button unless the configurations settings dictate otherwise -->
-              <% unless col_hash[:hidden] and col_hash[:hidden].map(&:downcase).include? "show" %>
+            <% if is_actions_column(col_hash) %>
+              <% if display_action(col_hash, "show") %>
                 <%= link_to edit_polymorphic_path(item), :class => "btn btn-default" do %>
                   <i class="fa fa-eye"></i> Show
                 <% end %>
               <% end %>
-              <!-- display the Delete button unless the configurations settings dictate otherwise -->
-              <% unless col_hash[:hidden] and col_hash[:hidden].map(&:downcase).include? "delete" %>
+              <% if display_action(col_hash, "delete") %>
                 <%= link_to item, method: :delete, data: { confirm: "Are you sure you want to remove?" }, :class => "btn btn-danger" do %>
                   <i class="fa fa-trash"></i> Delete
                 <% end %>
               <% end %>
-            <!-- if we are displaying a field that is an association-->
-            <% elsif col_hash[:sub_field] %>
-              <!-- if the association is one-to-many -->
-              <% if col_hash[:field].pluralize == col_hash[:field] %>
-                <% item.send(col_hash[:field]).each do |sub_item| %>
-                  <p><%= sub_item.send(col_hash[:sub_field]) %></p>
-                <% end %>
-              <!-- if the association is one-to-one -->
-              <% else %>
-                <p><%= item.send(col_hash[:field]).send(col_hash[:sub_field]) %></p>
-              <% end %>
-            <!-- if we are displaying a standard field -->
             <% else %>
-                <!-- if the column is editable -->
-                <% if col_hash[:editable] %>
-                  <%= editable item, col_hash[:field] %>
-                <!-- if the column is not editable -->
-                <% else %>
-                  <%= item.send(col_hash[:field]) %>
-                <% end %>
+                <%= display_field(col_hash, item) %>
             <% end %>
           </td>
         <% end %>
