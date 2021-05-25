@@ -12,13 +12,11 @@
       </div>
       <!-- display the current search term in a dismissable tag -->
       <% if @search_term.size > 0 %>
-        <div class="col-md-6">
-          <div class="alert alert-success" role="alert">
-            <%= @search_term %>
-            <%= button_tag type: "submit", class: "close", name: "search", value: "" do %>
-              <span aria-hidden="true">&times;</span>
-            <% end %>
-          </div>
+        <div class="alert alert-success" role="alert">
+          <%= @search_term %>
+          <%= button_tag type: "submit", class: "close", name: "search", value: "" do %>
+            <span aria-hidden="true">&times;</span>
+          <% end %>
         </div>
       <% end %>
     <% end %>
