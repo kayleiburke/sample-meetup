@@ -2,9 +2,10 @@
 
 ## Getting Started
 To run the application:
-    - `bundle install`
-    - `rake db:setup`
-    - `rails s`
+
+    bundle install
+    rake db:setup
+    rails s
 
 ## Demo API
 The live demo site can be accessed at: https://sample-meetup-site.herokuapp.com/
