@@ -7,8 +7,8 @@ To run the application:
     rake db:setup
     rails s
 
-## Demo API
-The live demo site can be accessed at: https://sample-meetup-site.herokuapp.com/
+## Demo
+https://sample-meetup-site.herokuapp.com/
 
 
 ## App Specifications:
