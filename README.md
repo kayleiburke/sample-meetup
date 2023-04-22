@@ -8,7 +8,7 @@ To run the application:
     rails s
 
 ## Demo
-https://sample-meetup-site.herokuapp.com/
+https://sample-meetup-site-heroku-22.herokuapp.com/
 
 
 ## App Specifications:
