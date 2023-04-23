@@ -1,6 +1,5 @@
-<h1>Editing User</h1>
+<h2>User Info</h2>
 
 <%= render 'form', user: @user %>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path, class: 'btn btn-primary' %>
+<%= render 'shared/back_button', path: users_path %>
