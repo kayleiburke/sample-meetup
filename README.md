@@ -45,6 +45,7 @@ The new group now shows up on the main page:
    <img width="1309" alt="Screen Shot 2023-04-23 at 12 04 21 AM" src="https://user-images.githubusercontent.com/4614468/233821035-f6c1dff2-567f-40a4-b63a-c1b811043326.png">
 
 Users are also able to register and login to the site.  Currently, logged-in users have the same access to the site and unauthenticated users, but designated access is a feature that can be added to this site in the future:
+* Login page:
    <img width="1309" alt="Screen Shot 2023-04-23 at 12 13 12 AM" src="https://user-images.githubusercontent.com/4614468/233821046-05f13cd4-2f2a-4399-99b8-22c3c61c80cd.png">
-
-<img width="1309" alt="Screen Shot 2023-04-23 at 12 13 00 AM" src="https://user-images.githubusercontent.com/4614468/233821081-9993e59b-bbf2-446e-96ce-b014ff3404f8.png">
+* Registration page:
+   <img width="1309" alt="Screen Shot 2023-04-23 at 12 13 00 AM" src="https://user-images.githubusercontent.com/4614468/233821081-9993e59b-bbf2-446e-96ce-b014ff3404f8.png">
