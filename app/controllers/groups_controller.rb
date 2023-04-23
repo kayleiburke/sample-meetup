@@ -108,7 +108,9 @@ class GroupsController < ApplicationController
           user = User.find_by(first_name: first_name, last_name: last_name)
 
           if !user
-            user = User.create!(first_name: first_name, last_name: last_name, email: Faker::Internet.email, password: "test123", password_confirmation: "test123")
+            user = User.create!(first_name: first_name, last_name: last_name, email: Faker::Internet.email) do |u|
+              u.password = "test123"
+            end
           end
 
           group = Group.find_or_create_by(name: row[2].strip)
