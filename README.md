@@ -7,6 +7,8 @@ To run the application:
     rake db:setup
     rails s
 
+Note that 3 sample groups are created during the `rake db:seed` step of `rake db:setup`.  
+
 ## Demo Site
 https://sample-meetup-site-heroku-22.herokuapp.com/
 
@@ -46,7 +48,7 @@ The new group now shows up on the main page:
    <img width="1309" alt="Screen Shot 2023-04-23 at 12 04 21 AM" src="https://user-images.githubusercontent.com/4614468/233821035-f6c1dff2-567f-40a4-b63a-c1b811043326.png">
 
 ### Bulk Adding a new Group
-Groups can be bulk-added to the site via csv file.  The csv must have 4 columns: First Name, Last Name, Group Name, and Role.  These columns can be re-named as desired, but corresponding data must be in this order. A header row is currently required, but this requirement may be removed in future releases as the column names currently just serve as placeholders with no other purpose.
+Groups can be bulk-added to the site via csv file.  The csv must have 4 columns: First Name, Last Name, Group Name, and Role.  These columns can be re-named as desired, but corresponding data must be in this order. A header row is currently required, but this requirement may be removed in future releases as the column names currently just serve as placeholders with no other purpose.  New or existing users and groups can be specified in this file.  Any new users that are created will have a default password of `Test123` set for them, along with an auto-generated email address.
 
 #### Example csv contents:
 ```
