@@ -6,8 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-user_1 = User.find_or_create_by(first_name: "Kaylei", last_name: "Burke", email: "kaylei.burke@gmail.com")
-user_2 = User.find_or_create_by(first_name: "Test", last_name: "User", email: "test@test.com")
+user_1 = User.find_or_create_by(first_name: "Kaylei", last_name: "Burke", email: "kaylei.burke@gmail.com", "test123")
+user_2 = User.find_or_create_by(first_name: "Test", last_name: "User", email: "test@test.com", "test123")
 
 omaha_js = Group.find_or_create_by(name: "Omaha JS")
 coding_club = Group.find_or_create_by(name: "Coding Club")
