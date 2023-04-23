@@ -44,7 +44,7 @@
     </tbody>
   </table>
   <!-- show pagination -->
-  <%= will_paginate items %>
+  <%= will_paginate items, renderer: BootstrapPagination::Rails %>
 <% end %>
 
 

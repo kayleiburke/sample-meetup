@@ -223,10 +223,6 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
-    spring (2.1.1)
-    spring-watcher-listen (2.0.1)
-      listen (>= 2.7, < 4.0)
-      spring (>= 1.2, < 3.0)
     sprockets (3.7.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -257,7 +253,7 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    will_paginate (3.1.8)
+    will_paginate (3.3.1)
     will_paginate-bootstrap (1.0.2)
       will_paginate (>= 3.0.3)
     x-editable-rails (1.5.5.1)
@@ -286,17 +282,15 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   pg
   puma (~> 3.11)
-  rails (~> 7.0.1)
+  rails (~> 7.0.4.3)
   sass-rails (~> 5.0)
   selenium-webdriver
-  spring
-  spring-watcher-listen (~> 2.0.0)
   sqlite3
   turbolinks (~> 5)
   tzinfo-data
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)
-  will_paginate (~> 3.1.0)
+  will_paginate (~> 3.3)
   will_paginate-bootstrap
   x-editable-rails
 
