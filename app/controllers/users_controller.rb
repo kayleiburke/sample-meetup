@@ -41,6 +41,24 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    @engagement_columns = [
+      {
+        field: "group",
+        sub_field: "name",
+        name: "Group",
+        editable: false
+      },
+      {
+        field: "group",
+        sub_field: "description",
+        name: "Description",
+        editable: false
+      },
+      {
+        field: "role",
+        editable: false
+      }
+    ]
   end
 
   # POST /users
