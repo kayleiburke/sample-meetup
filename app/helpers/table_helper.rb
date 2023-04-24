@@ -16,15 +16,26 @@ module TableHelper
       if column_info[:field].pluralize == column_info[:field]
         output = ""
         item.send(column_info[:field]).each do |sub_item|
-          output = output + "<p>" + sub_item.send(column_info[:sub_field]).to_s + "</p>"
+          if column_info[:link]
+            output = output + "<p>" + link_to(sub_item.send(column_info[:sub_field]), polymorphic_path(sub_item)) + "</p>"
+          else
+            output = output + "<p>" + sub_item.send(column_info[:sub_field]).to_s + "</p>"
+          end
         end
         output.html_safe
       # if the association is one-to-one
       else
-        item.send(column_info[:field]).send(column_info[:sub_field])
+        if column_info[:link]
+          sub_item = item.send(column_info[:field])
+          link_to(item.send(column_info[:field]).send(column_info[:sub_field]), polymorphic_path(sub_item))
+        else
+          item.send(column_info[:field]).send(column_info[:sub_field])
+        end
       end
     elsif column_info[:editable]
       editable item, column_info[:field]
+    elsif column_info[:link]
+      link_to item.send(column_info[:field]), polymorphic_path(item)
     else
       item.send(column_info[:field])
     end

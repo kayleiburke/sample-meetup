@@ -41,24 +41,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    @engagement_columns = [
-      {
-        field: "group",
-        sub_field: "name",
-        name: "Group",
-        editable: false
-      },
-      {
-        field: "group",
-        sub_field: "description",
-        name: "Description",
-        editable: false
-      },
-      {
-        field: "role",
-        editable: false
-      }
-    ]
+    set_columns
   end
 
   # POST /users
@@ -86,9 +69,10 @@ class UsersController < ApplicationController
       params[:user].delete(:password)
     end
     respond_to do |format|
+      set_columns
       if @user.update(user_params)
-        format.html { render :edit, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
+        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.json { render :edit, status: :ok, location: @user }
       else
         format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -107,6 +91,28 @@ class UsersController < ApplicationController
   end
 
   private
+    def set_columns
+      @engagement_columns = [
+        {
+          field: "group",
+          sub_field: "name",
+          name: "Group",
+          editable: false,
+          link: true
+        },
+        {
+          field: "group",
+          sub_field: "description",
+          name: "Description",
+          editable: false
+        },
+        {
+          field: "role",
+          editable: false
+        }
+      ]
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])

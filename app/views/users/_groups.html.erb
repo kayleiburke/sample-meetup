@@ -4,7 +4,7 @@
       <label class="col-md-4 control-label">Groups</label>
       <div class="col-md-8 inputGroupContainer">
         <div class="">
-          <%= render "shared/table/table", items: @user.engagements.paginate(:page => params[:page], :per_page => 5), item_class: Engagement, columns: @engagement_columns %>
+          <%= render "shared/table/table", items: @user.engagements.paginate(:page => params[:page], :per_page => 5), item_class: Engagement, columns: columns %>
         </div>
       </div>
     </div>

@@ -167,7 +167,8 @@ class GroupsController < ApplicationController
           {
               field: "user",
               sub_field: "full_name",
-              editable: false
+              editable: false,
+              link: true
           },
           {
               field: "role",
