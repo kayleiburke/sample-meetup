@@ -14,7 +14,7 @@ https://sample-meetup-site-heroku-22.herokuapp.com/
 
 
 ## App Specifications:
-Below were the specifications used to design the application:
+This application was created as part of a job interview process. Below were the specifications used to design the application:
 
 - This app stores Users and the Groups they attend. Users have first names and last names.
 Groups have a name. Users can attend multiple groups and have roles in each group. The roles
